@@ -1,99 +1,147 @@
-/* =========================================================
-   GG SALORT WEBSITE
-   Overlay windows
-========================================================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  const openButtons = document.querySelectorAll("[data-open]");
-  const closeButtons = document.querySelectorAll("[data-close]");
-  const overlays = document.querySelectorAll(".overlay");
+/* =========================================
+   GG SALORT — INTERACTIONS
+========================================= */
 
 
-  /* =======================================================
-     OPEN WINDOW
-  ======================================================= */
+/* =========================================
+   ELEMENTS
+========================================= */
 
-  openButtons.forEach(button => {
+const studioOverlay = document.getElementById("studioOverlay");
+const sampleOverlay = document.getElementById("sampleOverlay");
+const liveOverlay = document.getElementById("liveOverlay");
 
-    button.addEventListener("click", () => {
+const openStudio = document.getElementById("openStudio");
+const openSamplePack = document.getElementById("openSamplePack");
+const openLive = document.getElementById("openLive");
 
-      const targetId = button.dataset.open;
-      const target = document.getElementById(targetId);
-
-      if (!target) return;
-
-      target.classList.add("is-open");
-
-      document.body.style.overflow = "hidden";
-
-    });
-
-  });
+const closeStudio = document.getElementById("closeStudio");
+const closeSample = document.getElementById("closeSample");
+const closeLive = document.getElementById("closeLive");
 
 
-  /* =======================================================
-     CLOSE WINDOW
-  ======================================================= */
+/* =========================================
+   OPEN OVERLAY
+========================================= */
 
-  closeButtons.forEach(button => {
+function openOverlay(overlay) {
 
-    button.addEventListener("click", () => {
+  overlay.classList.add("active");
 
-      closeAllWindows();
+  document.body.style.overflow = "hidden";
 
-    });
-
-  });
+}
 
 
-  /* =======================================================
-     CLICK OUTSIDE WINDOW
-  ======================================================= */
+/* =========================================
+   CLOSE OVERLAY
+========================================= */
 
-  overlays.forEach(overlay => {
+function closeOverlay(overlay) {
 
-    overlay.addEventListener("click", event => {
+  overlay.classList.remove("active");
 
-      if (event.target === overlay) {
+  document.body.style.overflow = "";
 
-        closeAllWindows();
-
-      }
-
-    });
-
-  });
+}
 
 
-  /* =======================================================
-     ESC KEY
-  ======================================================= */
+/* =========================================
+   STUDIO
+========================================= */
 
-  document.addEventListener("keydown", event => {
+openStudio.addEventListener("click", function () {
 
-    if (event.key === "Escape") {
+  openOverlay(studioOverlay);
 
-      closeAllWindows();
-
-    }
-
-  });
+});
 
 
-  /* =======================================================
-     CLOSE FUNCTION
-  ======================================================= */
+closeStudio.addEventListener("click", function () {
 
-  function closeAllWindows() {
+  closeOverlay(studioOverlay);
 
-    overlays.forEach(overlay => {
+});
 
-      overlay.classList.remove("is-open");
 
-    });
+/* =========================================
+   SAMPLE PACK
+========================================= */
 
-    document.body.style.overflow = "";
+openSamplePack.addEventListener("click", function () {
+
+  openOverlay(sampleOverlay);
+
+});
+
+
+closeSample.addEventListener("click", function () {
+
+  closeOverlay(sampleOverlay);
+
+});
+
+
+/* =========================================
+   LIVE
+========================================= */
+
+openLive.addEventListener("click", function () {
+
+  openOverlay(liveOverlay);
+
+});
+
+
+closeLive.addEventListener("click", function () {
+
+  closeOverlay(liveOverlay);
+
+});
+
+
+/* =========================================
+   CLOSE BY CLICKING OUTSIDE WINDOW
+========================================= */
+
+studioOverlay.addEventListener("click", function (event) {
+
+  if (event.target === studioOverlay) {
+    closeOverlay(studioOverlay);
+  }
+
+});
+
+
+sampleOverlay.addEventListener("click", function (event) {
+
+  if (event.target === sampleOverlay) {
+    closeOverlay(sampleOverlay);
+  }
+
+});
+
+
+liveOverlay.addEventListener("click", function (event) {
+
+  if (event.target === liveOverlay) {
+    closeOverlay(liveOverlay);
+  }
+
+});
+
+
+/* =========================================
+   ESCAPE KEY
+========================================= */
+
+document.addEventListener("keydown", function (event) {
+
+  if (event.key === "Escape") {
+
+    closeOverlay(studioOverlay);
+    closeOverlay(sampleOverlay);
+    closeOverlay(liveOverlay);
 
   }
 
