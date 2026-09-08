@@ -116,6 +116,11 @@ main {
 
   cursor: pointer;
 
+  -webkit-appearance: none;
+  appearance: none;
+  color: #111;
+  -webkit-tap-highlight-color: transparent;
+
   box-shadow:
     0 3px 12px rgba(0, 0, 0, 0.08);
 
@@ -123,7 +128,6 @@ main {
     transform 0.2s ease,
     box-shadow 0.2s ease;
 }
-
 .option-card:hover {
   transform: translateY(-2px);
 
@@ -199,14 +203,12 @@ main {
 ========================================= */
 
 .option-arrow {
+  display: none;
   position: absolute;
-
   right: 17px;
   top: 16px;
-
   font-size: 25px;
   line-height: 1;
-
   font-weight: 400;
 }
 
