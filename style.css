@@ -49,14 +49,13 @@ a {
     linear-gradient(
       to bottom,
       rgb(239, 182, 70) 0%,
-      rgb(239, 182, 70) 45%,
-      rgb(248, 224, 172) 72%,
-      rgba(255, 253, 247, 0.96) 100%
+      rgb(239, 182, 70) 38%,
+      rgb(248, 224, 172) 68%,
+      rgba(255, 253, 247, 0.96) 88%,
+      #fffdf7 100%
     );
 
   padding: 22px 18px 30px;
-
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .hero-title {
