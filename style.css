@@ -712,7 +712,9 @@ footer {
   .hero h1 {
     font-size: 68px;
   }
-
+.option-arrow {
+    display: block;
+  }
   .option-section,
   .music-section {
     padding-left: 25px;
